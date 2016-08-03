@@ -99,5 +99,10 @@ namespace WebApplication2
                 Table1.Rows.Add(tr);
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LoginMember.aspx");
+        }
     }
 }

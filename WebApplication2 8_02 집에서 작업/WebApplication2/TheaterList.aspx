@@ -19,7 +19,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TextBox_Row" runat="server" Width="26px"></asp:TextBox>
         열&nbsp;
-        <asp:TextBox ID="TextBox_Number" runat="server" Width="26px"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Number" runat="server" Width="26px" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
         번&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button_NewTheater" runat="server" Text="상영관 추가" OnClick="Button_NewTheater_Click" />
 &nbsp;&nbsp;&nbsp;

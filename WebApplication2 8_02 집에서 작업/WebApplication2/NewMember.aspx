@@ -6,6 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+
     <style type="text/css">
         .auto-style1 {
             width: 134px;
@@ -44,15 +45,11 @@
             <tr>
                 <td class="auto-style1">계정</td>
                 <td class="auto-style2">
-               <asp:TextBox ID="TXT_ID" runat="server"></asp:TextBox>
-                    <br />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                        ControlToValidate="TXT_ID" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
+               <asp:TextBox ID="TXT_ID" runat="server" />
+             
                 </td>
                 <td class="auto-style3">
-                    <asp:Button ID="Button1" runat="server" Text="계정확인" />
+                    <asp:Button ID="Button1" runat="server" Text="계정확인" OnClick="Button1_Click" />
                 </td>
             </tr>
             <tr>
@@ -60,23 +57,11 @@
                 <td class="auto-style2">
                     <asp:TextBox ID="TXT_PASS" TextMode="Password" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                        ControlToValidate="TXT_PASS" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
-                        ControlToValidate="TXT_PASS" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorSamePassword">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">비밀번호 확인</td>
                 <td>
                     <asp:TextBox ID="TXT_PASSCHECK" TextMode="Password" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                        ControlToValidate="TXT_PASSCHECK" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -84,28 +69,18 @@
                 <td class="auto-style2">
                     <asp:TextBox ID="TXT_NAME" runat="server"></asp:TextBox>
                      <br />
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                        ControlToValidate="TXT_NAME" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
      <tr>
                 <td class="auto-style1">주민번호</td>
                 <td class="auto-style2">
-                    &nbsp;<asp:TextBox ID="TXT_BIRTHDAY" runat="server" Width="138px"></asp:TextBox>
+                    <asp:TextBox ID="TXT_BIRTHDAY" runat="server" Width="138px"  MaxLength="6" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;" ></asp:TextBox>
                     -
-                    <asp:TextBox ID="TXT_SEX" runat="server" Width="18px"></asp:TextBox>
+                    <asp:TextBox ID="TXT_SEX" runat="server" Width="18px"  MaxLength="1" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
                      <br />
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                        ControlToValidate="TXT_BIRTHDAY" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
-                        ControlToValidate="TXT_SEX" Display="Dynamic" EnableClientScript="False"
-                        OnLoad="CheckRequiredFieldValidatorNullOrEmpty">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
@@ -129,11 +104,12 @@
             </tr>
         </table>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="BTN_Submit" runat="server" OnClick="BTN_Submit_Click" Text="가입신청" />
+        <asp:Button ID="BTN_Submit" runat="server" OnClick="BTN_Submit_Click" OnClientClick="javascript:confirms()" Text="가입신청" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BTN_Cancel" runat="server" Text="취소" />
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </form>

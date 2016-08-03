@@ -23,7 +23,7 @@
             <asp:Table ID="Table1" runat="server">
             </asp:Table>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button" runat="server" OnClick="test" Text="확인" />
+            <asp:Button ID="Button" runat="server" OnClick="OnClick" Text="확인" style="height: 21px" />
             <input type="text" id="bunho" runat="server" value="선택하세요." visible="false" />
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

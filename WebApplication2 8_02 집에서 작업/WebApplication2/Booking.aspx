@@ -48,7 +48,8 @@
                 </td>
                  <td>
                      예약 인원 :
-                     <asp:TextBox ID="TextBox_TicketCount" runat="server" Width="17px"></asp:TextBox>
+                     <asp:TextBox ID="TextBox_TicketCount" runat="server" Width="17px" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
                      명<asp:Button ID="Button1" runat="server" Text="확인" OnClick="Button1_Click" />
                 </td>
             </tr>

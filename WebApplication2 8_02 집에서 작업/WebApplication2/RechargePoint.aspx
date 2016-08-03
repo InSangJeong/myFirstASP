@@ -16,7 +16,8 @@
         </asp:Table>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server" Width="81px"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" Width="81px" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
         원&nbsp;
         <asp:Button ID="Button1" runat="server" Text="충전하기" OnClick="Button1_Click" />
     

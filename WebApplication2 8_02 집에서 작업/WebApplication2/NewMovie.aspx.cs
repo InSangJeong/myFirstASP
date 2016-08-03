@@ -22,16 +22,16 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             dbManager = (DBManager)Session["DBadmin"];
-
+            TextBox_TheaterNumber.Attributes.Add("readonly", "readonly");
+            TextBox_TheaterNumber.Style.Add("color", "gray");
         }
+       
 
         protected void Button_cancel_Click(object sender, EventArgs e)
         {
-
             Response.Redirect("MovieList.aspx");
         }
-
-
+        //가용가능 상영관 검색
         protected void Button_Serch_Theater_Click(object sender, EventArgs e)
         {
             if (TextBox_StartMovie.Text == string.Empty || TextBox_endMovie.Text == string.Empty )
@@ -47,11 +47,12 @@ namespace WebApplication2
                 ClientScript.RegisterStartupScript(this.GetType(), "script", popupAddress, true);
             }
         }
-
-      
         //새로운 영화 등록
         protected void Button_New_Click(object sender, EventArgs e)
         {
+            //유효성 검사 실패시 바로 취소.
+            if (!ChkisValid())
+                return;
             //TODO List: 
             // 1. 새로운 영화의 ID를 지정하기위해 이전 영화의 MaxID 호출
             // 2. 영화등록
@@ -89,15 +90,16 @@ namespace WebApplication2
             List<Tuple<string, object>> Params = new List<Tuple<string, object>>();
             Params.Add(new Tuple<string, object>("@MovieID", NewMovieID));
             Params.Add(new Tuple<string, object>("@Moviename", TextBox_Name.Text));
-            Params.Add(new Tuple<string, object>("@Playstartdatetime", TextBox_StartMovie.Text));
-            Params.Add(new Tuple<string, object>("@Playenddatetime", TextBox_endMovie.Text));
+            //yyyyMMddHHmmss To yyyy-MM-dd HH:mm:ss
+            string formatString = "yyyyMMddHHmmss";
+            Params.Add(new Tuple<string, object>("@Playstartdatetime", DateTime.ParseExact(TextBox_StartMovie.Text,formatString, null).ToString("yyyy-MM-dd HH:mm:ss")));
+            Params.Add(new Tuple<string, object>("@Playenddatetime", DateTime.ParseExact(TextBox_endMovie.Text, formatString, null).ToString("yyyy-MM-dd HH:mm:ss")));
             Params.Add(new Tuple<string, object>("@Runningtime", TextBox_RunningTIme.Text));
             Params.Add(new Tuple<string, object>("@Viewingclass", TextBox_ViewingClass.Text));
             if (this.FileUpload1.HasFile)
             {
                 this.FileUpload1.SaveAs(HttpRuntime.AppDomainAppPath + "MoviePoster\\"
                     + NewMovieID.Trim() + "_" + TextBox_Name.Text.Trim() + "." + FileUpload1.FileName.Split('.')[1]);
-                //this.FileUpload1.SaveAs(Constant.MoviePosterPath + NewMovieID.Trim() + "_" + TextBox_Name.Text.Trim() + "." + FileUpload1.FileName.Split('.')[1]);
             }
             
             Params.Add(new Tuple<string, object>("@Movieposter", NewMovieID.Trim() + "_" + TextBox_Name.Text.Trim() + "." + FileUpload1.FileName.Split('.')[1] ));
@@ -172,14 +174,42 @@ namespace WebApplication2
             Response.Redirect(string.Format("MovieList.aspx"));
             #endregion
         }
-
+        //상영스케줄 등록
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             String playDayTime = TextBox_playDayTime.Text;
+            //null값 에러처리
+            if (playDayTime == "" || TextBox_StartMovie.Text == "" || TextBox_endMovie.Text == "")
+                return;
+            //입력한 날짜가 상영날짜안에 들어있지 않으면.
+            if(Convert.ToInt64(TextBox_StartMovie.Text) > Convert.ToInt64(playDayTime) || Convert.ToInt64(TextBox_endMovie.Text) < Convert.ToInt64(playDayTime))
+            {
+                return;
+            }
             string formatString = "yyyyMMddHHmmss";
             DateTime dt = DateTime.ParseExact(playDayTime, formatString, null);
-
             TextBox_MoviePlayList.Text += dt.ToString("yyyy-MM-dd HH':'mm':'ss \r\n");
+        }
+        //유효성 검사
+        protected bool ChkisValid()
+        {
+            if(TextBox_Name.Text == "" || TextBox_StartMovie.Text == "" || TextBox_endMovie.Text =="" || TextBox_TheaterNumber.Text == "" || 
+                FileUpload1.FileName == "" || TextBox_ViewingClass.Text == "" || TextBox_RunningTIme.Text == "" || TextBox_MoviePlayList.Text == "")
+            {
+                Common.ShowMessage(this, @"미입력된 항목이 있습니다.");
+                return false;
+            }
+
+            if(Convert.ToInt64(TextBox_StartMovie.Text) - Convert.ToInt64(TextBox_endMovie.Text) <= 0 )
+            {
+                Common.ShowMessage(this, @"기간이 너무 짧거나 종료시간이 더 이릅니다.");
+                return false;
+            }
+
+
+
+            return true;
         }
     }
 }

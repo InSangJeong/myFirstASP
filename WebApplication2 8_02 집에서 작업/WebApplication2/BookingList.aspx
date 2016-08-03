@@ -22,6 +22,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="홈으로" />
+    
     </div>
     </form>
 </body>

@@ -9,6 +9,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+
     <style type="text/css">
         .auto-style1 {
             height: 18px;
@@ -40,6 +41,9 @@
     <form id="form1" runat="server">
     <div>
     
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+
         영화 정보<br />
         <table style="width:100%;">
             <tr>
@@ -52,19 +56,29 @@
             </tr>
             <tr>
                 <td class="auto-style6">상영 시작일시</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TextBox_StartMovie" runat="server"></asp:TextBox>
+                <td class="auto-style2"> 
+                    <asp:TextBox ID="TextBox_StartMovie" runat="server" MaxLength="14" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
+                  <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" TargetControlID="TextBox_StartMovie"
+            MaskType="Number" Mask="9999-99-99 99:99:99" MessageValidatorTip="true" AcceptNegative="None"
+                                InputDirection="RightToLeft" ErrorTooltipEnabled="true" >
+            </cc1:MaskedEditExtender>
                 </td>
                 <td class="auto-style4">상영종료일시</td>
                  <td>
-                     <asp:TextBox ID="TextBox_endMovie" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="TextBox_endMovie" runat="server" MaxLength="14" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
+                      <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server" TargetControlID="TextBox_endMovie"
+            MaskType="Number" Mask="9999-99-99 99:99:99" MessageValidatorTip="true" AcceptNegative="None"
+                                InputDirection="RightToLeft" ErrorTooltipEnabled="true" >
+            </cc1:MaskedEditExtender>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style7">상영관</td>
                 <td class="auto-style3">
                     <asp:Button ID="Button_Serch_Theater" runat="server" OnClick="Button_Serch_Theater_Click" Text="검색" Width="44px" />
-                    <asp:TextBox ID="TextBox_TheaterNumber" runat="server" ReadOnly="True" Width="94px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TheaterNumber" runat="server" Width="94px" ></asp:TextBox>
                 </td>
                 <td class="auto-style5"></td>
                  <td class="auto-style1">*상영기간을입력하면 상영관검색이 됩니다.</td>
@@ -80,7 +94,8 @@
              <tr>
                 <td class="auto-style7">관람등급</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox_ViewingClass" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_ViewingClass" runat="server" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
                  </td>
                 <td class="auto-style5"></td>
                  <td class="auto-style1"></td>
@@ -88,7 +103,8 @@
              <tr>
                 <td class="auto-style7">RunTime</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox_RunningTIme" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_RunningTIme" runat="server" style="text-align:left;ime-mode:disabled;"
+                            onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
                  </td>
                 <td class="auto-style5"></td>
                  <td class="auto-style1"></td>

@@ -7,18 +7,14 @@ namespace WebApplication2
 
     public class Common
     {
-        static public void ShowMessageBox(Page page, String message)
+        static public void ShowMessage(Page page, string script)
         {
-            //작동안하는 코드;
-            try
-            {
-                page.ClientScript.RegisterStartupScript(typeof(Page), "alert", "<script language=JavaScript>alert('" + message +"');</script>");
-            }
-            catch(Exception e)
-            {
-                ;
-            }
+            string scriptmsg = "alert('" + script + "');";
+            ScriptManager.RegisterStartupScript(page, page.GetType(),
+                                  "ServerControlScript", scriptmsg, true);
         }
+
+
         static public string CSDateTiemToASPDateTime(DateTime dateTime)
         {
             //코드는 간단한데 여기저기서 많이 불러서 공통으로 옮김.

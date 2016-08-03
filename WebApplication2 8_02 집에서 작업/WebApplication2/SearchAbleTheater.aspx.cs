@@ -37,7 +37,7 @@ namespace WebApplication2
             List<Movie> Movies = Movie.SqlDataReaderToMember(reader);
             List<Theater> AbleTheaters = new List<Theater>();
             // DEBUG : 시간 겹치는 영화만 나오는지 확인해
-            if (Movies.Count == 0)
+            if (Movies == null || Movies.Count == 0)
             {
                 //기간이 겹치는 영화가 없으므로 모든 상영관을 테이블로 도시한다.
                 Command = "SELECT * FROM Theater";
@@ -177,8 +177,14 @@ namespace WebApplication2
             }
             #endregion
         }
+        //취소버튼
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewMovie.aspx");
+        }
 
-        protected void test(object sender, EventArgs e)
+        //확인클릭
+        protected void OnClick(object sender, EventArgs e)
         {
             foreach (TableRow tr in Table1.Rows)
             {
@@ -205,14 +211,6 @@ namespace WebApplication2
                 }
             }
         }
-        
-      
-        //취소버튼
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("NewMovie.aspx");
-        }
-        
     }
 }
  
