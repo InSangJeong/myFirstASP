@@ -26,9 +26,6 @@
                     <asp:Image ID="Image3" runat="server" Width ="250" Height ="250"/>
                 </td>
                 <td>
-                    <br />
-                    <br />
-                    <br />
                     &nbsp;
                     환영합니다.<br />
                     <br />
@@ -49,6 +46,8 @@
                     <asp:Button ID="Button3" runat="server" Text="예매 내역 확인" OnClick="Button3_Click" />
                     <br />
                     <br />
+                    &nbsp;
+                    <asp:Button ID="Button4" runat="server" Height="21px" OnClick="Button4_Click" Text="로그 아웃" Width="91px" />
                     <br />
                     <br />
                 </td>

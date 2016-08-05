@@ -9,7 +9,7 @@
 </head>
 <body style="height: 212px">
     <form id="form1" runat="server">
-    <div style="height: 175px">
+    <div style="height: 217px">
         <table style="width: 100%; height: 200px;">
             <td>
                 
@@ -42,6 +42,11 @@
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="Button_Member" runat="server" Text="회원 관리" Width="110px" OnClick="Button_Member_Click" />
+                
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="Button1" runat="server" Height="21px" OnClick="Button1_Click" Text="로그 아웃" Width="113px" />
                 
                 <br />
                 

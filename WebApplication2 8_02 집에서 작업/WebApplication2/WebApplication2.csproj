@@ -127,7 +127,6 @@
     <Content Include="RechargePoint.aspx" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
-    <Content Include="scripts\jquery-3.1.0.min.js" />
     <Content Include="SearchAbleTheater.aspx" />
     <Content Include="TheaterList.aspx" />
     <Content Include="Web.config" />

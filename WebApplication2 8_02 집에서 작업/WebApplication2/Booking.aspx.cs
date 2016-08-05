@@ -16,66 +16,102 @@ namespace WebApplication2
         String SelectedMovieID = "";
         String SelectedPlayDate = "";
         String SelectedTheater = "";
+        string NotSelected = "선택 안함";
         int remainTicket = 0;
 
        
         //페이지로드
         protected void Page_Load(object sender, EventArgs e)
         {
-            SelectedTheater = DropDownList_Theater.SelectedValue.Trim();
-
+            //세션 로드
             LoginedMember = (Member)Session["MEMBER"];
             dbManager = (DBManager)Session["DBAdmin"];
 
+            //preSelectedValue input
+            SelectedMovieID = DropDownList_MovieName.SelectedValue.Trim();
+            SelectedPlayDate = DropDownList_PlayDate.SelectedValue.Trim();
+            SelectedTheater = DropDownList_Theater.SelectedValue.Trim();
+
             //사용자가 아무 영화를 클릭하지 않은 초기화 상태라면
-            if(DropDownList_MovieName.SelectedValue == "")
+            if(DropDownList_MovieName.SelectedValue == "" || DropDownList_MovieName.SelectedValue == NotSelected)
             {
                 String Command = "Select * From Movie";
                 SqlDataReader reader = dbManager.GetDataList(Command, new List<Tuple<string, object>>());
                 List<Movie> Movies = Movie.SqlDataReaderToMember(reader);
 
+                Movie notSelectValue = new Movie();
+                notSelectValue.Moviename = NotSelected;
+                notSelectValue.MovieID = NotSelected;
+                Movies.Add(notSelectValue);
+
                 DropDownList_MovieName.DataTextField = "Moviename";
                 DropDownList_MovieName.DataValueField = "MovieID";
                 DropDownList_MovieName.DataSource = Movies;
                 DropDownList_MovieName.DataBind();
+                DropDownList_MovieName.SelectedValue = NotSelected;
             }
             //영화를 선택하였으니 해당 영화에 맞는 시간을 보여줌.
             else
             {
                 SelectedMovieID = DropDownList_MovieName.SelectedValue.Trim();
-                String Command = "Select * From Movieschedule Where MovieID = @MovieID";
+
+                string Command = "Select * From Movieschedule Where MovieID = @MovieID";
                 List<Tuple<string, object>> Params = new List<Tuple<string, object>>();
                 Params.Add(new Tuple<string, object>("@MovieID", SelectedMovieID));
 
                 SqlDataReader reader = dbManager.GetDataList(Command, Params);
                 List<Movieschedule> PlayTimes = Movieschedule.SqlDataReaderToMember(reader);
 
-                DropDownList_PlayDate.DataTextField = "Playtime";
-                DropDownList_PlayDate.DataValueField = "Playtime";
-                DropDownList_PlayDate.DataSource = PlayTimes;
-                DropDownList_PlayDate.DataBind();
-                Params.Clear();
-                //상영관을 선택하지 않았음.
-                if (DropDownList_PlayDate.SelectedValue == "")
+                Movieschedule notSelectValue = new Movieschedule();
+                notSelectValue.Playtime = NotSelected;
+                PlayTimes.Add(notSelectValue);
+
+                //상영날짜 선택하지 않았음.
+                if (SelectedPlayDate == "" || SelectedPlayDate == NotSelected)
                 {
-                    ;
+                    DropDownList_PlayDate.DataTextField = "Playtime";
+                    DropDownList_PlayDate.DataValueField = "Playtime";
+                    DropDownList_PlayDate.DataSource = PlayTimes;
+                    DropDownList_PlayDate.DataBind();
+
+                    DropDownList_PlayDate.SelectedValue = NotSelected;
+                    Params.Clear();
                 }
-                //상영관을 선택하였으면 관이랑 남은 좌석수 표시
+                //상영날짜를 선택하였으면 관이랑 남은 좌석수 표시
                 else
                 {
-                    SelectedPlayDate = DropDownList_PlayDate.SelectedValue.Trim();
+                    //날짜별 영화관중에서 선택한 날짜의 영화관만 도시한다.
+                    List<Movieschedule> PlayTheaters = new List<Movieschedule>();
+                    foreach (Movieschedule playTime in PlayTimes)
+                    {
+                        if(playTime.Playtime == SelectedPlayDate)
+                        {
+                            PlayTheaters.Add(playTime);
+                        }
+                    }
 
                     DropDownList_Theater.DataTextField = "RemaindSeatMent";
                     DropDownList_Theater.DataValueField = "TheaterID";
-                    DropDownList_Theater.DataSource = PlayTimes;
+                    if(PlayTheaters.Count == 0)
+                    {
+                        ;
+                    }
+                    else
+                    {
+                        DropDownList_Theater.DataSource = PlayTheaters;
+
+                    }
                     DropDownList_Theater.DataBind();
+
                     Params.Clear();
 
+                    //예약인원이 정해져있는 상태이면서 예약내용이 모두 null값이 아닐경우 좌석배치표를 생성한다.
                     if(TextBox_TicketCount.Text != "")
                         remainTicket = Convert.ToInt32(TextBox_TicketCount.Text);
                     if (remainTicket != 0)
                     {
-                        if (SelectedMovieID == "" || SelectedPlayDate == "" || SelectedTheater == "")
+                        if (SelectedMovieID == "" || SelectedPlayDate == "" || SelectedTheater == ""||
+                            SelectedMovieID == NotSelected || SelectedPlayDate == NotSelected || SelectedTheater == NotSelected)
                             return;
                         SetTable();
                     }

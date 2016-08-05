@@ -107,7 +107,9 @@ namespace WebApplication2
         //영화제거
         protected void Button_DeleteMovie_Click(object sender, EventArgs e)
         {
-
+            //고려대상.....
+            //1. 영화
+            //2. 
         }
         //돌아가기
         protected void Button1_Click(object sender, EventArgs e)
