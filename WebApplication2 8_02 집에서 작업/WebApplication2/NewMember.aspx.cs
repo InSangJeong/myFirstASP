@@ -161,5 +161,10 @@ namespace WebApplication2
 
             }
         }
+        //취소
+        protected void BTN_Cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("Main.aspx"));
+        }
     }
 }

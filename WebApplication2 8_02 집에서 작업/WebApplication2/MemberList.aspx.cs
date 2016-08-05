@@ -64,6 +64,12 @@ namespace WebApplication2
 
             foreach (var member in Members)
             {
+                Command = "Select * From Point Where ID = @ID ORDER BY Occuredatetime ASC";
+                Params.Clear();
+                Params.Add(new Tuple<string, object>("@ID", member.ID.Trim()));
+                reader = dbManager.GetDataList(Command, Params);
+                List<dataSet.Point> Point = dataSet.Point.SqlDataReaderToMember(reader);
+
                 tr = new TableRow();
                 td = new TableCell();
 
@@ -77,7 +83,6 @@ namespace WebApplication2
                 for (int j = 0; j < ColCount; j++)
                 {
                     td = new TableCell();
-                    //임시 
                     switch (j)
                     {
                         case 0:
@@ -90,7 +95,11 @@ namespace WebApplication2
                             td.Text = member.Age;
                             break;
                         case 3:
-                            td.Text = member.Point;
+                            //null exception 처리
+                            if(Point != null && Point.Count > 0)
+                                td.Text = Point[0].Remainvalue;
+                            else
+                                td.Text = "0";
                             break;
                     }
 

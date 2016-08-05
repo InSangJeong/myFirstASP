@@ -14,6 +14,11 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             LoginedMember = (Member)Session["MEMBER"];
+            if(LoginedMember == null)
+            {
+                Common.ShowMessage(this, @"잘못된 접근입니다.");
+                Response.Redirect("Main.aspx");
+            }
             dbManager = (DBManager)Session["DBAdmin"];
             //상영중인 영화를 이미지 객체애 매칭합니다.
 
@@ -75,6 +80,13 @@ namespace WebApplication2
         protected void Button3_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("BookingList.aspx"));
+        }
+        //log out
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("Main.aspx");
         }
     }
 }
