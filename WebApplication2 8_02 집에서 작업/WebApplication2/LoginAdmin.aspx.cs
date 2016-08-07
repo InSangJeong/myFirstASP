@@ -14,7 +14,7 @@ namespace WebApplication2
         {
             if((Member)Session["MEMBER"] == null || ((Member)Session["MEMBER"]).ID.Trim().ToLower() != "admin")
             {
-                Common.ShowMessage(this, "잘못된 접근입니다.");
+                Common.ShowMessage(this, @"잘못된 접근입니다.");
                 Response.Redirect("Main.aspx");
             }
         }

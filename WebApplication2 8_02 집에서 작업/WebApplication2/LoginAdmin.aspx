@@ -7,46 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
-<body style="height: 212px">
+<body style="height: 279px">
     <form id="form1" runat="server">
-    <div style="height: 217px">
+    <div style="height: 259px">
         <table style="width: 100%; height: 200px;">
             <td>
                 
-                <asp:Image ID="Image1" runat="server" />
-                
-            </td>
-            <td>
-                
-                <asp:Image ID="Image2" runat="server" />
-                
-            </td>
-            <td>
-                
-                <asp:Image ID="Image3" runat="server" />
-                
-            </td>
-            <td>
-                
-                &nbsp;&nbsp; 관리자 계정입니다.<br />
+                환영합니다. 관리자님.<br />
+                <br />
+                현재 관리모드 상태입니다.<br />
                 <br />
                 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;
                 
-                <asp:Button ID="Button_Movie" runat="server" Text="상영 영화 관리" Width="110px" OnClick="Button_Movie_Click" />
+                <asp:Button ID="Button_Movie" runat="server" Height="27px" Text="상영 영화 관리" Width="110px" OnClick="Button_Movie_Click" />
                 <br />
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Button_Theater" runat="server" Text="상영관 관리" Width="110px" OnClick="Button_Theater_Click" />
+                <asp:Button ID="Button_Theater" runat="server" Height="27px" Text="상영관 관리" Width="110px" OnClick="Button_Theater_Click" />
                 <br />
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Button_Member" runat="server" Text="회원 관리" Width="110px" OnClick="Button_Member_Click" />
+                <asp:Button ID="Button_Member" runat="server" Height="27px" Text="회원 관리" Width="110px" OnClick="Button_Member_Click" />
                 
                 <br />
                 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Button1" runat="server" Height="21px" OnClick="Button1_Click" Text="로그 아웃" Width="113px" />
+                <asp:Button ID="Button1" runat="server" Height="27px" OnClick="Button1_Click" Text="로그 아웃" Width="113px" />
                 
                 <br />
                 

@@ -23,7 +23,6 @@ namespace WebApplication2
             TableRow tr = new TableRow();
             TableCell td = new TableCell();
             tr.Cells.Add(td);
-            List<string> TableNames = Theater.GetMemberNameToSting();
 
             //테이블 제목열
             //개선필요(isjeong 7. 27)

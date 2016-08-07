@@ -11,7 +11,8 @@
     <form id="form1" runat="server">
     <div>
     
-        예약내역<br />
+        예매 내역입니다.<br />
+        -------------------------------------------------------------<br />
         <br />
         <asp:Table ID="Table1" runat="server">
         </asp:Table>
@@ -19,8 +20,9 @@
         <br />
         <br />
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="예매취소" OnClick="Button2_Click"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
     
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="홈으로" />
     

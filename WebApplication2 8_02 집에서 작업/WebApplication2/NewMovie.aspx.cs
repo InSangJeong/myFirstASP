@@ -201,7 +201,7 @@ namespace WebApplication2
                 return false;
             }
 
-            if(Convert.ToInt64(TextBox_StartMovie.Text) - Convert.ToInt64(TextBox_endMovie.Text) <= 0 )
+            if(Convert.ToInt64(TextBox_StartMovie.Text) - Convert.ToInt64(TextBox_endMovie.Text) >= 0 )
             {
                 Common.ShowMessage(this, @"기간이 너무 짧거나 종료시간이 더 이릅니다.");
                 return false;
