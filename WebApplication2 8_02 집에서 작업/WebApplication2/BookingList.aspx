@@ -11,7 +11,8 @@
     <form id="form1" runat="server">
     <div>
     
-        예매내역<br />
+        예매 내역입니다.<br />
+        -------------------------------------------------------------<br />
         <br />
         <asp:Table ID="Table1" runat="server">
         </asp:Table>

@@ -11,7 +11,8 @@
     <form id="form1" runat="server">
     <div>
     
-        포인트 사용내역<br />
+        포인트 충전/사용/환불 내역입니다.<br />
+        -----------------------------------------------------------------------<br />
         <asp:Table ID="Table1" runat="server">
         </asp:Table>
         <br />

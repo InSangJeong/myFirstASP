@@ -21,7 +21,7 @@
             height: 20px;
         }
         .auto-style8 {
-            width: 225px;
+            width: 150px;
         }
     </style>
 </head>
@@ -29,7 +29,7 @@
     <form id="form1" runat="server">
     <div>
     
-        예약<br />
+        영화 예매를 시작합니다.<br />
         <table style="width:100%;">
             <tr>
                 <td class="auto-style2">
@@ -63,7 +63,9 @@
                 </td>
                
                 <td class="auto-style4">
-                    <asp:Button ID="Button2" runat="server" Text="예약하기" OnClick="Button2_Click" />
+                    <asp:Button ID="Button2" runat="server" Text="예약하기" OnClick="Button2_Click" Height="21px" />
+                &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button3" runat="server" Height="21px" Text="돌아가기" OnClick="Button3_Click" />
                 </td>
             </tr>
               </table>
