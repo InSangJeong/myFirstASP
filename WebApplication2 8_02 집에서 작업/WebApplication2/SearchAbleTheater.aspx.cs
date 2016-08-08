@@ -30,8 +30,8 @@ namespace WebApplication2
             string Command = "SELECT * FROM Movie WHERE Playstartdatetime <= @end AND Playenddatetime >= @start";
 
             List<Tuple<string, object>> Params = new List<Tuple<string, object>>();
-            Params.Add(new Tuple<string, object>("@start", start));
-            Params.Add(new Tuple<string, object>("@end", end));
+            Params.Add(new Tuple<string, object>("@start", DateTime.ParseExact(start,"yyyyMMddHHmmss",null).ToString("yyyy-MM-dd HH:mm:ss")));
+            Params.Add(new Tuple<string, object>("@end", DateTime.ParseExact(end, "yyyyMMddHHmmss", null).ToString("yyyy-MM-dd HH:mm:ss")));
             SqlDataReader reader = dbManager.GetDataList(Command, Params);
 
             List<Movie> Movies = Movie.SqlDataReaderToMember(reader);
@@ -180,7 +180,7 @@ namespace WebApplication2
         //취소버튼
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NewMovie.aspx");
+            Response.Write("<script>self.close();</script>");
         }
 
         //확인클릭

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace WebApplication2.dataSet
@@ -32,8 +33,9 @@ namespace WebApplication2.dataSet
                     Movies.Add(Movie);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Data);
                 return null;
             }
             return Movies;

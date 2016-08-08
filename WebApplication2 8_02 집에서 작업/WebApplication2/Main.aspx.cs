@@ -30,6 +30,7 @@ namespace WebApplication2
             //ID, Pass 항목 비어있으면 리턴
             if(string.IsNullOrEmpty(TXT_ID.Text) || string.IsNullOrEmpty(TXT_Pass.Text))
             {
+                Common.ShowMessage(this, @"ID, Pass를 입력하세요.");
                 return;
             }
             //DBManager가 페이지로드에서 셋팅이 안되어 있을 경우.
@@ -65,9 +66,8 @@ namespace WebApplication2
                     }
                 }
                 else
-                {   
-                    //ID가 0개이거나 2개이상이면 에러. 
-                    //ID가 기본키라 2개이상은 될수가 없을텐데
+                {
+                    Common.ShowMessage(this, @"ID, Pass의 입력을 확인하세요.");
                     return;
                 }
 
