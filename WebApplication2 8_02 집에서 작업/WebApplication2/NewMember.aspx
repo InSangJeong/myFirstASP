@@ -38,34 +38,34 @@
     <form id="form1" runat="server">
     <div>
     
-        회원가입 페이지입니다.<br />
-        정보를 입력하여주세요. (*)표시는 필수사항 입니다.<br />
-        -----------------------------------------------------------------------------------<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+        회원 정보<br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style1">계정(*)</td>
+                <td class="auto-style1">계정</td>
                 <td class="auto-style2">
                <asp:TextBox ID="TXT_ID" runat="server" />
              
                 </td>
                 <td class="auto-style3">
                     <asp:Button ID="Button1" runat="server" Text="계정확인" OnClick="Button1_Click" />
-                    (*)</td>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style1">비밀번호(*)</td>
+                <td class="auto-style1">비밀번호</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXT_PASS" TextMode="Password" runat="server"></asp:TextBox>
                     <br />
                 </td>
-                <td class="auto-style3">비밀번호 확인(*)</td>
+                <td class="auto-style3">비밀번호 확인</td>
                 <td>
                     <asp:TextBox ID="TXT_PASSCHECK" TextMode="Password" runat="server"></asp:TextBox>
                     <br />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">이름(*)</td>
+                <td class="auto-style1">이름</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXT_NAME" runat="server"></asp:TextBox>
                      <br />
@@ -73,7 +73,7 @@
                 <td class="auto-style3">&nbsp;</td>
             </tr>
      <tr>
-                <td class="auto-style1">주민번호(*)</td>
+                <td class="auto-style1">주민번호</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXT_BIRTHDAY" runat="server" Width="138px"  MaxLength="6" style="text-align:left;ime-mode:disabled;"
                             onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;" ></asp:TextBox>

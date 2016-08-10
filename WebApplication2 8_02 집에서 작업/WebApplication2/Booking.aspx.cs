@@ -228,16 +228,10 @@ namespace WebApplication2
             reader = dbManager.GetDataList(Command, Params);
             List<dataSet.Point> points = dataSet.Point.SqlDataReaderToMember(reader);
             if (points == null || points.Count == 0)
-            {
-                Common.ShowMessage(this, @"포인트가 부족합니다.");
                 return;
-            }
             int totalPrice = remainTicket * Constant.MoviePrice;
             if (Convert.ToInt32(points[0].Remainvalue) <  totalPrice)
-            {
-                Common.ShowMessage(this, @"포인트가 부족합니다.");
                 return;
-            }
             LastlyRemaindPoint = Convert.ToInt32(points[0].Remainvalue);
             Params.Clear();
             #endregion
@@ -253,10 +247,7 @@ namespace WebApplication2
                 reader = dbManager.GetDataList(Command, Params);
                 List<Seat> seat = Seat.SqlDataReaderToSeat(reader);
                 if (seat == null || seat.Count == 0 || seat[0].Isbooked == "True")
-                {
-                    Common.ShowMessage(this, @"이미 예약된 좌석입니다.");
                     return;
-                }
                 Params.Clear();
             }
             #endregion
@@ -266,15 +257,9 @@ namespace WebApplication2
             reader = dbManager.GetDataList(Command, Params);
             SelcetedMovieObject = Movie.SqlDataReaderToMember(reader);
             if (SelcetedMovieObject == null || SelcetedMovieObject.Count == 0)
-            {
-                Common.ShowMessage(this, @"영화 정보를 받아오지 못하였습니다.");
                 return;
-            }
             if (Convert.ToInt32(LoginedMember.Age) < Convert.ToInt32(SelcetedMovieObject[0].Viewingclass))
-            {
-                Common.ShowMessage(this, @"관람등급 제한.");
                 return;
-            }
             Params.Clear();
             #endregion
             #region 4
@@ -292,10 +277,7 @@ namespace WebApplication2
                 Params.Add(new Tuple<string, object>("@Bookedcount", remainTicket));
                 Params.Add(new Tuple<string, object>("@Viewingclass", SelcetedMovieObject[0].Viewingclass));
                 if (!dbManager.DoCommand(Command, Params))
-                {
-                    Common.ShowMessage(this, @"예매실패. 관리자에게 문의하세요.");
-                    return;
-                }
+                    ;//TODO : 예약 실패 로직(미완성).
                 Params.Clear();
             }
             #endregion
@@ -308,10 +290,7 @@ namespace WebApplication2
             Params.Add(new Tuple<string, object>("@Rechargedvalue", 0));
             Params.Add(new Tuple<string, object>("@Remainvalue", LastlyRemaindPoint - remainTicket * Constant.MoviePrice));
             if (!dbManager.DoCommand(Command, Params))
-            {
-                Common.ShowMessage(this, @"예매실패. 관리자에게 문의하세요.");
-                return;
-            }
+                ;//TODO : 예약 실패 로직(미완성).
             Params.Clear();
             #endregion
             #region 6
@@ -325,10 +304,7 @@ namespace WebApplication2
                 Params.Add(new Tuple<string, object>("@Seatnumber", TryBookingSeat.Item2));
                 Params.Add(new Tuple<string, object>("@Playtime", SelectedPlayDate));
                 if (!dbManager.DoCommand(Command, Params))
-                {
-                    Common.ShowMessage(this, @"예매실패. 관리자에게 문의하세요.");
-                    return;
-                }
+                    ;//TODO : 예약 실패 로직(미완성).
                 Params.Clear();
             }
             #endregion
@@ -356,10 +332,7 @@ namespace WebApplication2
             Params.Add(new Tuple<string, object>("@TheaterID", SelectedTheater));
             Params.Add(new Tuple<string, object>("@Playtime", SelectedPlayDate));
             if (!dbManager.DoCommand(Command, Params))
-            {
-                Common.ShowMessage(this, @"예매실패. 관리자에게 문의하세요.");
-                return;
-            }
+                ;//TODO : 예약 실패 로직(미완성).
             else
             {
                 Response.Redirect("BookingList.aspx");
@@ -367,9 +340,5 @@ namespace WebApplication2
             #endregion
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LoginMember.aspx");
-        }
     }
 }

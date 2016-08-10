@@ -8,18 +8,21 @@
     <title></title>
 </head>
 <body>
+    <p>
+        <br />
+&nbsp; 영화 목록</p>
     <form id="form1" runat="server">
     
-        <div>
+    <div>
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 영화 목록<br />
-            ----------------------------------------------------------------------------------------------------<asp:Table ID="Table1" runat="server" Height="145px" Width="808px" BackColor ="#006699" >
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Table ID="Table1" runat="server" Height="145px" Width="600px" BackColor ="#006699" >
         </asp:Table>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
         <asp:Button ID="Button_NewMovie" runat="server" Text="영화 등록" OnClick="Button_NewMovie_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button_DeleteMovie" runat="server" Text="영화 삭제" OnClick="Button_DeleteMovie_Click" Visible ="False" />
+        <asp:Button ID="Button_DeleteMovie" runat="server" Text="영화 삭제" OnClick="Button_DeleteMovie_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="height: 21px" Text="돌아가기" />
         </div>

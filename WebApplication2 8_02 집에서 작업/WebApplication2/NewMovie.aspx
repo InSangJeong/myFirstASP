@@ -15,11 +15,11 @@
             height: 18px;
         }
         .auto-style2 {
-            width: 230px;
+            width: 212px;
         }
         .auto-style3 {
             height: 18px;
-            width: 230px;
+            width: 212px;
         }
         .auto-style4 {
             width: 139px;
@@ -44,8 +44,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
 
-        영화 정보를 입력하여 주세요.<br />
-        ---------------------------------------------------------------------------------------------------------------------------<br />
+        영화 정보<br />
         <table style="width:100%;">
             <tr>
                 <td class="auto-style6">영화이름</td>
@@ -53,7 +52,7 @@
                     <asp:TextBox ID="TextBox_Name" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style4">&nbsp;</td>
-                 <td>* 상영일시 yyyymmddhhmmss 형태로 입력하세요.</td>
+                 <td>*상영일시 yyyy-mm-dd hh:mm:ss</td>
             </tr>
             <tr>
                 <td class="auto-style6">상영 시작일시</td>
@@ -82,7 +81,7 @@
                     <asp:TextBox ID="TextBox_TheaterNumber" runat="server" Width="94px" ></asp:TextBox>
                 </td>
                 <td class="auto-style5"></td>
-                 <td class="auto-style1">* 상영기간을입력하면 상영관검색이 됩니다.</td>
+                 <td class="auto-style1">*상영기간을입력하면 상영관검색이 됩니다.</td>
             </tr>
              <tr>
                 <td class="auto-style7">상영이미지</td>
@@ -97,7 +96,7 @@
                 <td class="auto-style3">
                     <asp:TextBox ID="TextBox_ViewingClass" runat="server" style="text-align:left;ime-mode:disabled;"
                             onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
-                 &nbsp;* 나이</td>
+                 </td>
                 <td class="auto-style5"></td>
                  <td class="auto-style1"></td>
             </tr>
@@ -106,7 +105,7 @@
                 <td class="auto-style3">
                     <asp:TextBox ID="TextBox_RunningTIme" runat="server" style="text-align:left;ime-mode:disabled;"
                             onkeyPress="if ((event.keyCode < 48) || (event.keyCode > 57))  event.returnValue=false;"></asp:TextBox>
-                 &nbsp;* 상영시간</td>
+                 </td>
                 <td class="auto-style5"></td>
                  <td class="auto-style1"></td>
             </tr>
@@ -125,8 +124,6 @@
                       </td>
                
                  <td class="auto-style1">
-                     * yyyymmddhhmmss 형태로 입력하세요.<br />
-                     * 반드시 1개 이상의 상영시간을 지정하세요.<br />
                      <asp:Button ID="Button1" runat="server" Text="상영시간 등록" OnClick="Button1_Click" />
                  </td>
             </tr>

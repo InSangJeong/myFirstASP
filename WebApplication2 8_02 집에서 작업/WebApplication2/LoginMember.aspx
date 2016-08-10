@@ -35,19 +35,19 @@
                     <br />
                     <br />
                     &nbsp;
-                    <asp:Button ID="ButtonRechargePoint" runat="server" Height="27px" Text="포인트 충전" OnClick="ButtonRechargePointClick" />
+                    <asp:Button ID="ButtonRechargePoint" runat="server" Text="포인트 충전" OnClick="ButtonRechargePointClick" />
                     <br />
                     <br />
                     &nbsp;
-                    <asp:Button ID="Button2" runat="server"  Height="27px" Text="예매 하기" OnClick="Button2_Click" />
+                    <asp:Button ID="Button2" runat="server" Text="예매 하기" OnClick="Button2_Click" />
                     <br />
                     <br />
                     &nbsp;
-                    <asp:Button ID="Button3" runat="server" Height="27px" Text="예매 내역 확인" OnClick="Button3_Click" />
+                    <asp:Button ID="Button3" runat="server" Text="예매 내역 확인" OnClick="Button3_Click" />
                     <br />
                     <br />
                     &nbsp;
-                    <asp:Button ID="Button4" runat="server" Height="27px" OnClick="Button4_Click" Text="로그 아웃" Width="91px" />
+                    <asp:Button ID="Button4" runat="server" Height="21px" OnClick="Button4_Click" Text="로그 아웃" Width="91px" />
                     <br />
                     <br />
                 </td>

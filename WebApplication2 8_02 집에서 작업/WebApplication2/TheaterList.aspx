@@ -12,7 +12,6 @@
     <div>
     
         상영관 관리<br />
-        -----------------------------------------------------------------------------------<br />
         <asp:Table ID="Table1" runat="server">
         </asp:Table>
         <br />
@@ -25,7 +24,7 @@
         번&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button_NewTheater" runat="server" Text="상영관 추가" OnClick="Button_NewTheater_Click" />
 &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button_DeleteTheater" runat="server" Text="상영관 삭제" OnClick="Button_DeleteTheater_Click" Visible ="False"/>
+        <asp:Button ID="Button_DeleteTheater" runat="server" Text="상영관 삭제" OnClick="Button_DeleteTheater_Click" />
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="이전페이지" />
         <br />

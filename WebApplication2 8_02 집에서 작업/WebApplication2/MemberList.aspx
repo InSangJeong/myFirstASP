@@ -11,10 +11,7 @@
     <form id="form1" runat="server">
     <div>
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
         회원 목록<br />
-        ------------------------------------------------------------------<br />
         <br />
         <asp:Table ID="Table1" runat="server">
         </asp:Table>
